@@ -12,7 +12,10 @@ import PayPalCheckout from './PayPalCheckout'
 
 const test_mpesa_enpoint = 'http://localhost:3000/api/payment/mpesa/live'
 const live_mpesa_enpoint = 'https://payment.droopay.com/api/payment/mpesa/live'
-const get_data_endppoint = 'http://localhost:4000/api/products/checkout-data'
+
+const get_data_endppoint_test = 'http://localhost:4000/api/products/checkout-data'
+const get_data_endppoint_live = 'https://api.droopay.com/api/products/checkout-data'
+
 
 
 export default function FieldsCheckout({ id, productName, productPrice, sellerID, isManualPrice, token }) {
@@ -35,7 +38,7 @@ export default function FieldsCheckout({ id, productName, productPrice, sellerID
             id: id
         };
 
-        axios.post(get_data_endppoint, payload)
+        axios.post(get_data_endppoint_live, payload)
             .then(res => {
                 setData(res.data);
 
@@ -48,7 +51,7 @@ export default function FieldsCheckout({ id, productName, productPrice, sellerID
     useEffect(() => {
         const defineEndpoint = () => {
             if (type.toLocaleLowerCase() === 'mpesa') {
-                return test_mpesa_enpoint
+                return live_mpesa_enpoint
             }
             if (type.toLocaleLowerCase() === 'emola') {
                 return 'http://localhost:3010/api/emola'

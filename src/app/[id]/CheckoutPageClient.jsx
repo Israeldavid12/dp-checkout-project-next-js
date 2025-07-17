@@ -10,7 +10,8 @@ import Image from 'next/image';
 import Loading from '../_components/LoadingAnim'
 import jwt from 'jsonwebtoken';
 
-const get_data_endppoint = 'http://localhost:4000/api/products/checkout-data'
+const get_data_endppoint_test = 'http://localhost:4000/api/products/checkout-data'
+const get_data_endppoint_live = 'https://api.droopay.com/api/products/checkout-data'
 
 
 
@@ -54,7 +55,7 @@ export default function CheckoutPageClient({ id }) {
                 id: id
             };
             try {
-                const res = await axios.post(get_data_endppoint, payload);
+                const res = await axios.post(get_data_endppoint_live, payload);
                 setRes(res?.data?.product)
                 setToken(res?.data?.token)
                 setStatus(res?.data?.status_code)
