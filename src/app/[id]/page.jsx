@@ -9,3 +9,4 @@ export async function generateMetadata({ params }) {
 export default function CheckoutPage({ params }) {
     return <CheckoutPageClient id={params.id} /> 
 }
+  
