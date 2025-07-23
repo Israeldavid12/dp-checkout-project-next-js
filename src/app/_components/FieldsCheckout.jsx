@@ -34,7 +34,6 @@ export default function FieldsCheckout({ id, productName, productPrice, sellerID
 
     useEffect(() => {
         const payload = {
-            reqType: "get/product/byid",
             id: id
         };
 
@@ -51,7 +50,7 @@ export default function FieldsCheckout({ id, productName, productPrice, sellerID
     useEffect(() => {
         const defineEndpoint = () => {
             if (type.toLocaleLowerCase() === 'mpesa') {
-                return live_mpesa_enpoint
+                return test_mpesa_enpoint
             }
             if (type.toLocaleLowerCase() === 'emola') {
                 return 'http://localhost:3010/api/emola'
@@ -83,7 +82,6 @@ export default function FieldsCheckout({ id, productName, productPrice, sellerID
                     }
                 }
 
-                console.log(payload, endpoint)
 
                 const response = await axios.post(endpoint, payload, {
                     headers: {
@@ -92,13 +90,13 @@ export default function FieldsCheckout({ id, productName, productPrice, sellerID
                 })
 
                 if (response.data && response.data.status == 201) {
-                    console.log('transacao criada com successo')
+                  
                     router.push(`/success?email=${response?.data?.buyer_email || ''}`);
                     setRunTrans(false)
                 }
 
             } catch (err) {
-                console.log(err)
+                
                 setRunTrans(false)
                 setError("Falha ao processar o pagamento, por favor tente novamente")
                 return false
