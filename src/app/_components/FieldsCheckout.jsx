@@ -50,7 +50,7 @@ export default function FieldsCheckout({ id, productName, productPrice, sellerID
     useEffect(() => {
         const defineEndpoint = () => {
             if (type.toLocaleLowerCase() === 'mpesa') {
-                return test_mpesa_enpoint
+                return live_mpesa_enpoint
             }
             if (type.toLocaleLowerCase() === 'emola') {
                 return 'http://localhost:3010/api/emola'
