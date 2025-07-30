@@ -89,9 +89,11 @@ export default function FieldsCheckout({ id, productName, productPrice, sellerID
                     }
                 })
 
+                const result = response.data;
+
                 if (response.data && response.data.status == 201) {
                   
-                    router.push(`/success?email=${response?.data?.buyer_email || ''}`);
+                    router.push(`/success?email=${result?.buyer_email || ''}&type=${result?.type}&acess=${result?.acess_url}`);
                     setRunTrans(false)
                 }
 
