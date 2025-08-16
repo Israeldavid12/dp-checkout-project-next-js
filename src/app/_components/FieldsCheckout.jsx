@@ -32,6 +32,23 @@ export default function FieldsCheckout({ id, productName, productPrice, sellerID
     const [is_error, setError] = useState(null)
 
 
+
+
+
+    const handleWhiteCheckout = async () => {
+        try {
+            const url_endpoint = 'https://payment.droopay.com/api/payment/checkout/white/live'
+            const response = await axios.post(url_endpoint, {
+                id
+            });
+            const url = response.data?.url;
+            router.push(url)
+        } catch (e) {
+            console.error("Error during white checkout:", e);
+            setError("Falha ao processar o pagamento, por favor tente novamente");
+        }
+    }
+
     useEffect(() => {
         const payload = {
             id: id
@@ -92,13 +109,13 @@ export default function FieldsCheckout({ id, productName, productPrice, sellerID
                 const result = response.data;
 
                 if (response.data && response.data.status == 201) {
-                  
+
                     router.push(`/success?email=${result?.buyer_email || ''}&type=${result?.type}&acess=${result?.acess_url}`);
                     setRunTrans(false)
                 }
 
             } catch (err) {
-                
+
                 setRunTrans(false)
                 setError("Falha ao processar o pagamento, por favor tente novamente")
                 return false
@@ -191,10 +208,10 @@ export default function FieldsCheckout({ id, productName, productPrice, sellerID
                                 setType('Mpesa')
                             }} className={`w-20 h-20 rounded-md
                         ${type === "Mpesa" ? " ring-2 ring-blue-300 opacity-60 p-4 bg-[#F0F4FF]" : ""}`} src={mpesaicon} />
- 
-                            {/* EMOLA METHOD */}  
-                            {/* <Image onClick={() => setType('PayPal')} className={`w-20 h-20  rounded-md 
-                         ${type === "PayPal" ? " ring-2 ring-blue-300 opacity-60 p-4 bg-[#EBF0FF]" : ""}`} src={paypalIcon} /> */}
+
+                            {/* EMOLA METHOD */}
+                            <Image onClick={() => setType('eMola')} className={`w-20 h-20  rounded-md 
+                         ${type === "eMola" ? " ring-2 ring-blue-300 opacity-60 p-4 bg-[#EBF0FF]" : ""}`} src={emolaicon} />
                         </div>
                     </div>
                     <div className='grid gap-3 p-0' >
@@ -202,6 +219,7 @@ export default function FieldsCheckout({ id, productName, productPrice, sellerID
                             <div className='grid gap-3' >
                                 <div className='flex gap-3 justify-center items-center ring-2 ring-[silver] px-3 rounded-md  hover:ring-blue-400 ' >
                                     <i className="bi bi-telephone"></i>
+                                    <p className=' font-[600] text-black/65'>+258</p>
                                     <input onChange={(e) => setPaymentNumber(e.target.value)} className='px-4 py-3 w-full outline-none text-[17px] rounded-md' type="number" placeholder='Numero Mpesa' />
                                 </div>
                                 <button
@@ -210,12 +228,14 @@ export default function FieldsCheckout({ id, productName, productPrice, sellerID
                         )}
                         {type === 'eMola' && (
                             <div className='grid gap-3' >
-                                <div className='flex gap-3 justify-center items-center ring-2 ring-[silver] px-3 rounded-md  hover:ring-blue-400 ' >
+                                {/* <div className='flex gap-3 justify-center items-center ring-2 ring-[silver] px-3 rounded-md  hover:ring-blue-400 ' >
                                     <i className="bi bi-telephone"></i>
+                                     <p className=' font-[600] text-black/65'>+258</p>
                                     <input onChange={(e) => setPaymentNumber(e.target.value)} className='px-4 py-3 w-full outline-none text-[17px] rounded-md' type="number" placeholder='Numero eMola' />
-                                </div>
+                                </div> */}
                                 <button
-                                    type="submit" className="flex justify-center h-14 items-center w-full text-white bg-[#F9732C] hover:bg-orange-800 focus:ring-4 focus:ring-orange-300 font-medium rounded-lg text-md px-5 py-2.5 me-2 mb-2 dark:bg-orange-600 dark:hover:bg-orange-700 focus:outline-none dark:focus:ring-orange-800">Pagar com eMola</button>
+                                    onClick={handleWhiteCheckout}
+                                   className="flex justify-center h-14 items-center w-full text-white bg-[#F9732C] hover:bg-orange-800 focus:ring-4 focus:ring-orange-300 font-medium rounded-lg text-md px-5 py-2.5 me-2 mb-2 dark:bg-orange-600 dark:hover:bg-orange-700 focus:outline-none dark:focus:ring-orange-800">Pagar com eMola</button>
 
                             </div>
 
