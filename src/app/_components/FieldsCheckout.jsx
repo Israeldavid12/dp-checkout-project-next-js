@@ -12,6 +12,8 @@ import PayPalCheckout from './PayPalCheckout'
 
 const test_mpesa_enpoint = 'http://localhost:3000/api/payment/mpesa/live'
 const live_mpesa_enpoint = 'https://payment.droopay.com/api/payment/mpesa/live'
+const live_emola_enpoint = 'https://payment.droopay.com/api/payment/emola/live'
+const test_emola_enpoint = 'http://localhost:3000/api/payment/emola/live'
 
 const get_data_endppoint_test = 'http://localhost:4000/api/products/checkout-data'
 const get_data_endppoint_live = 'https://api.droopay.com/api/products/checkout-data'
@@ -30,24 +32,24 @@ export default function FieldsCheckout({ id, productName, productPrice, sellerID
     const router = useRouter();
     const [manualPrice, setManualPrice] = useState(null)
     const [is_error, setError] = useState(null)
+    const [email, setEmail] = useState(null)
 
+    // const handleWhiteCheckout = async () => {
+    //     try {
+    //         if (!email) return setError("Por favor, insira seu e-mail antes de continuar");
 
-
-
-
-    const handleWhiteCheckout = async () => {
-        try {
-            const url_endpoint = 'https://payment.droopay.com/api/payment/checkout/white/live'
-            const response = await axios.post(url_endpoint, {
-                id
-            });
-            const url = response.data?.url;
-            router.push(url)
-        } catch (e) {
-            console.error("Error during white checkout:", e);
-            setError("Falha ao processar o pagamento, por favor tente novamente");
-        }
-    }
+    //         const url_endpoint = 'https://payment.droopay.com/api/payment/checkout/white/live'
+    //         const response = await axios.post(url_endpoint, {
+    //             id,
+    //             buyer_email: email
+    //         });
+    //         const url = response.data?.url;
+    //         router.push(url)
+    //     } catch (e) {
+    //         console.error("Error during white checkout:", e);
+    //         setError("Falha ao processar o pagamento, por favor tente novamente");
+    //     }
+    // }
 
     useEffect(() => {
         const payload = {
@@ -70,7 +72,7 @@ export default function FieldsCheckout({ id, productName, productPrice, sellerID
                 return live_mpesa_enpoint
             }
             if (type.toLocaleLowerCase() === 'emola') {
-                return 'http://localhost:3010/api/emola'
+                return live_emola_enpoint
             }
         }
         const getBuyerCountry = async () => {
@@ -165,6 +167,7 @@ export default function FieldsCheckout({ id, productName, productPrice, sellerID
                             onChange={handleName}
                             id='name'
                             name='name'
+
                             className='px-4 py-3 w-full outline-none ring-1 ring-[silver] text-black text-[17px] rounded-md hover:ring-2 hover:ring-blue-600' type="text" placeholder='Insira seu nome' required />
 
                     </div>
@@ -173,9 +176,14 @@ export default function FieldsCheckout({ id, productName, productPrice, sellerID
                     <label className='' htmlFor="email">E-mail *</label>
                     <input
                         name='email'
+                        onChange={(e) => setEmail(e.target.value)}
                         minLength={minLength}
                         maxLength={maxLength}
-                        id='email' className='px-4 py-3 w-full outline-none ring-1 ring-[silver] text-black text-[17px] rounded-md hover:ring-2 hover:ring-blue-600' type="email" placeholder='Insira seu e-mail' required />
+                        id='email'
+                        className='px-4 py-3 w-full outline-none ring-1 ring-[silver] text-black text-[17px] rounded-md hover:ring-2 hover:ring-blue-600'
+                        type="email"
+                        placeholder='Insira seu e-mail'
+                        required />
                 </div>
                 {data?.payer_contact_field && (
                     <div className='w-full' >
@@ -228,14 +236,13 @@ export default function FieldsCheckout({ id, productName, productPrice, sellerID
                         )}
                         {type === 'eMola' && (
                             <div className='grid gap-3' >
-                                {/* <div className='flex gap-3 justify-center items-center ring-2 ring-[silver] px-3 rounded-md  hover:ring-blue-400 ' >
+                                <div className='flex gap-3 justify-center items-center ring-2 ring-[silver] px-3 rounded-md  hover:ring-blue-400 ' >
                                     <i className="bi bi-telephone"></i>
-                                     <p className=' font-[600] text-black/65'>+258</p>
+                                    <p className=' font-[600] text-black/65'>+258</p>
                                     <input onChange={(e) => setPaymentNumber(e.target.value)} className='px-4 py-3 w-full outline-none text-[17px] rounded-md' type="number" placeholder='Numero eMola' />
-                                </div> */}
+                                </div>
                                 <button
-                                    onClick={handleWhiteCheckout}
-                                   className="flex justify-center h-14 items-center w-full text-white bg-[#F9732C] hover:bg-orange-800 focus:ring-4 focus:ring-orange-300 font-medium rounded-lg text-md px-5 py-2.5 me-2 mb-2 dark:bg-orange-600 dark:hover:bg-orange-700 focus:outline-none dark:focus:ring-orange-800">Pagar com eMola</button>
+                                    className="flex justify-center h-14 items-center w-full text-white bg-[#F9732C] hover:bg-orange-800 focus:ring-4 focus:ring-orange-300 font-medium rounded-lg text-md px-5 py-2.5 me-2 mb-2 dark:bg-orange-600 dark:hover:bg-orange-700 focus:outline-none dark:focus:ring-orange-800">Pagar com eMola</button>
 
                             </div>
 
