@@ -74,7 +74,7 @@ export default function CheckoutPageClient({ id }) {
 
     if (!res) return <Loading />;
 
-    if ([403, 404].includes(response_status_code)) {
+    if ([403, 404, 500].includes(response_status_code)) {
         return (
             <div className='flex justify-center items-center h-[100vh] bg-white'>
                 <div>
