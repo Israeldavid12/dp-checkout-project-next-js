@@ -180,7 +180,7 @@ export default function FieldsCheckout({ id, productName, productPrice, sellerID
                         minLength={minLength}
                         maxLength={maxLength}
                         id='email'
-                        className='px-4 py-3 w-full outline-none ring-1 ring-[silver] text-black text-[17px] rounded-md hover:ring-2 hover:ring-blue-600'
+                        className='px-4 py-3 w-full outline-none ring-1 ring-[silver] text-black text-[17px] rounded-md active:ring-2 hover:ring-blue-600'
                         type="email"
                         placeholder='Insira seu e-mail'
                         required />
