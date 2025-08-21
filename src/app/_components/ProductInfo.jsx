@@ -13,11 +13,11 @@ export default function ProductInfo({ price, is_manual_price, name, banner_url, 
 
     return (
         <div className={`${styles.productInfo} md:rounded-lg md:shadow-lg bg-white `} >
-            <div className='w-[100%] h-48 overflow-hidden rounded-lg mt-3 sm:mt-0' >
+            <div className='w-[100%] h-48 overflow-hidden rounded-lg mt-3 sm:mt-0 md:block hidden' >
                 <img className='w-full h-full object-cover rounded-lg ' src={`${banner_url}`} alt="logo" />
             </div>
 
-            <div className='flex gap-10 justify-start items-start w-full sm:pl-10' >
+            <div className='flex gap-10 justify-start items-start w-full sm:pl-10 mt-10' >
                 <div >
                     <img className='w-35 sm:w-60 rounded-md' src={`${image_url}`} alt="" />
                 </div>
