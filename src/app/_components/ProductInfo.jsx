@@ -18,7 +18,7 @@ export default function ProductInfo({ price, is_manual_price, name, banner_url, 
             </div>
 
             <div className='flex gap-10 justify-start items-start w-full sm:pl-10 mt-10' >
-                <div >
+                <div className='shadow' >
                     <img className='w-35 sm:w-60 rounded-md' src={`${image_url}`} alt="" />
                 </div>
 
