@@ -23,9 +23,9 @@ export default function ProductInfo({ price, is_manual_price, name, banner_url, 
                 </div>
 
                 <div className='grid gap-2 ' >
-                    <p>Esta a pagar:</p>
+                    <p className='text-[12px]' >Esta a pagar:</p>
                     <p className='font-[700]' >{name}</p>
-                    <p>COMPRA 100% SEGURA</p>
+                    <p className='text-[12px]' >COMPRA 100% SEGURA</p>
                     <p className='text-[#5C5CC4] text-[22px] font-[800] ' >{!is_manual_price && (price + ' MT')}</p>
                     <div>
                         <p className='text-[12px]' >Author: {name}</p>
