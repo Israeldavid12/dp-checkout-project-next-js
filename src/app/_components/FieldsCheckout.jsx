@@ -180,7 +180,7 @@ export default function FieldsCheckout({ id, productName, productPrice, sellerID
                         minLength={minLength}
                         maxLength={maxLength}
                         id='email'
-                        className='px-4 py-3 w-full outline-none ring-1 ring-[silver] text-black text-[17px] rounded-md active:ring-2 hover:ring-blue-600'
+                        className='px-4 py-3 w-full outline-none ring-1 ring-[silver] text-black text-[17px] rounded-md hover:ring-blue-600 focus:ring-2 focus:ring-blue-500'
                         type="email"
                         placeholder='Insira seu e-mail'
                         required />
@@ -214,21 +214,31 @@ export default function FieldsCheckout({ id, productName, productPrice, sellerID
                         <div className='flex  gap-4 p-2' >
                             <Image alt='image' onClick={(e) => {
                                 setType('Mpesa')
-                            }} className={`w-20 h-20 rounded-md
+                            }} className={`w-20 h-20 rounded-md hover:opacity-75
                         ${type === "Mpesa" ? " ring-2 ring-blue-300 opacity-60 p-4 bg-[#F0F4FF]" : ""}`} src={mpesaicon} />
 
                             {/* EMOLA METHOD */}
-                            <Image onClick={() => setType('eMola')} className={`w-20 h-20  rounded-md 
+                            <Image onClick={() => setType('eMola')}
+                                className={`w-20 h-20  rounded-md hover:opacity-75
                          ${type === "eMola" ? " ring-2 ring-blue-300 opacity-60 p-4 bg-[#EBF0FF]" : ""}`} src={emolaicon} />
                         </div>
                     </div>
                     <div className='grid gap-3 p-0' >
                         {type === 'Mpesa' && (
                             <div className='grid gap-3' >
-                                <div className='flex gap-3 justify-center items-center ring-2 ring-[silver] px-3 rounded-md  hover:ring-blue-400 ' >
-                                    <i className="bi bi-telephone"></i>
-                                    <p className=' font-[600] text-black/65'>+258</p>
-                                    <input onChange={(e) => setPaymentNumber(e.target.value)} className='px-4 py-3 w-full outline-none text-[17px] rounded-md' type="number" placeholder='Numero Mpesa' />
+                                <div
+                                    className="flex gap-3 justify-center items-center px-3  
+                                        ring-2 ring-[silver]  focus-within:ring-blue-500 
+                                     rounded-md"
+                                >
+                                    {/* <i className="bi bi-telephone"></i> */}
+                                    <p className="font-[600] text-black/65">+258</p>
+                                    <input
+                                        onChange={(e) => setPaymentNumber(e.target.value)}
+                                        className="px-4 py-3 w-full outline-none text-[17px]"
+                                        type="number"
+                                        placeholder="Número Mpesa"
+                                    />
                                 </div>
                                 <button
                                     type="submit" className="flex justify-center h-14 items-center w-full text-white bg-[#FF0000] hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-md px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 focus:outline-none dark:focus:ring-red-800">Pagar com Mpesa</button>
@@ -236,8 +246,8 @@ export default function FieldsCheckout({ id, productName, productPrice, sellerID
                         )}
                         {type === 'eMola' && (
                             <div className='grid gap-3' >
-                                <div className='flex gap-3 justify-center items-center ring-2 ring-[silver] px-3 rounded-md  hover:ring-blue-400 ' >
-                                    <i className="bi bi-telephone"></i>
+                                <div className='flex gap-3 justify-center items-center ring-2 ring-[silver] px-3 rounded-md  hover:ring-blue-400 focus-within:ring-blue-500  ' >
+                                    {/* <i className="bi bi-telephone"></i> */}
                                     <p className=' font-[600] text-black/65'>+258</p>
                                     <input onChange={(e) => setPaymentNumber(e.target.value)} className='px-4 py-3 w-full outline-none text-[17px] rounded-md' type="number" placeholder='Numero eMola' />
                                 </div>
