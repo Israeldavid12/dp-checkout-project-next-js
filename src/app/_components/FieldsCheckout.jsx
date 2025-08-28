@@ -173,14 +173,14 @@ export default function FieldsCheckout({ id, productName, productPrice, sellerID
                     </div>
                 )}
                 <div className='w-full' >
-                    <label className='' htmlFor="email">E-mail *</label>
+                    <label className='py-3' htmlFor="email">O seu e-mail *</label>
                     <input
                         name='email'
                         onChange={(e) => setEmail(e.target.value)}
                         minLength={minLength}
                         maxLength={maxLength}
                         id='email'
-                        className='px-4 py-3 w-full outline-none ring-1 ring-[silver] text-black text-[17px] rounded-md hover:ring-blue-600 focus:ring-2 focus:ring-blue-500'
+                        className='px-4 py-3 w-full outline-none ring-1 ring-[silver] text-black text-[17px] rounded-md hover:ring-blue-600 focus:ring-2 focus:ring-blue-500 mt-3'
                         type="email"
                         placeholder='Insira seu e-mail'
                         required />
@@ -209,8 +209,8 @@ export default function FieldsCheckout({ id, productName, productPrice, sellerID
                     </div>
                 )}
                 <div>
-                    <p className='text-[14px] sm:text-[15px] font-[600]' >Selecione um metodo de pagamento</p>
-                    <div className='flex gap-3 p-3' >
+                    <p className='text-[14px] sm:text-[15px] font-[600] text-center' >Selecione um metodo de pagamento</p>
+                    <div className='flex gap-3 p-3 justify-center' >
                         <div className='flex  gap-4 p-2' >
                             <Image alt='image' onClick={(e) => {
                                 setType('Mpesa')
@@ -261,7 +261,7 @@ export default function FieldsCheckout({ id, productName, productPrice, sellerID
                         {type === 'PayPal' && (
                             <PayPalCheckout id={id} productName={productName} />
                         )}
-                        <p className='text-black text-[11px]' >DROP PAY © 2025 - Todos os direitos reservados</p>
+                        <p className='text-black text-[11px] text-center mt-6' >Powered By DROP PAY © 2025 - Todos os direitos reservados - <a href="#">Duvidas sobre este o produto</a></p>
 
                     </div>
                 </div>

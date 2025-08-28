@@ -27,7 +27,7 @@ export default function Timer() {
         <div className={styles.timer} >
             <p class="text-lg text-start " id="timer">{formattedTime}</p>
             <i class="bi bi-clock-history text-center text-[35px] font-bold"></i>
-            <p className='text-xs sm:text-md text-end' >Preencha os seus dados antes que <br /> o cronômetro termine</p>
+            <p className='text-xs sm:text-md text-end' >Garanta o preenchimento <br /> dos seus dados <br />dentro do tempo disponível.</p>
         </div>
     )
 }
