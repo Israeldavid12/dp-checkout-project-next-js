@@ -261,7 +261,7 @@ export default function FieldsCheckout({ id, productName, productPrice, sellerID
                         {type === 'PayPal' && (
                             <PayPalCheckout id={id} productName={productName} />
                         )}
-                        <p className='text-black text-[11px] text-center mt-6' >Powered By DROP PAY © 2025 - Todos os direitos reservados - <a href="#">Duvidas sobre este o produto</a></p>
+                        <p className='text-black text-[11px] text-center mt-6' >Powered By DROP PAY © 2025 - Todos os direitos reservados - <a href="#">Duvidas sobre este produto</a></p>
 
                     </div>
                 </div>
