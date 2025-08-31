@@ -20,7 +20,7 @@ function Spinner({ type = 'mpesa' }) {
 }
 
 
-export default function TransLoad({ type = 'mpesa' }) {
+export default function TransLoad({ type = 'mpesa',  number }) {
     return (
         <div className="transition-all duration-500 transform  flex justify-center items-center fixed  left-0 right-0 bg-opacity-50 bg-bli w-screen h-screen backdrop-blur-md z-1000 top-0">
             <div className="flex flex-col gap-3 justify-center opacity-100 items-center  bg-white  rounded-md shadow-md p-4 text-black" >
@@ -29,15 +29,16 @@ export default function TransLoad({ type = 'mpesa' }) {
                     <p>Insira o PIN e aguarde...</p>
                 </div>
                 {type === 'mpesa' ? (
-                    <Image className="w-30 h-30 rounded-md" src={mpesaImage} />
+                    <Image className="w-25 h-25 rounded-md" src={mpesaImage} />
                 )
                     :
                     (
-                        <Image className="w-30 h-30 rounded-md" src={emolaicon} />
+                        <Image className="w-25 h-25 rounded-md" src={emolaicon} />
                     )
                 }
 
                 <p className="text-center text-sm">
+                    <span className="block font-bold">{number}</span>
                     <span className="block">Introduza o PIN no Popup que</span>
                     <span className="block">aparecerá no seu telemóvel com o</span>
                     <span className="block">número indicado para</span>

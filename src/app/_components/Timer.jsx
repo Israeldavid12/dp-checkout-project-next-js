@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 
 
 export default function Timer() {
-    const [timeLeft, setTimeLeft] = useState(900); // 3.33 minutos
+    const [timeLeft, setTimeLeft] = useState(300); // 3.33 minutos
 
     useEffect(() => {
         if (timeLeft <= 0) return;
@@ -27,7 +27,7 @@ export default function Timer() {
         <div className={styles.timer} >
             <p class="text-lg text-start " id="timer">{formattedTime}</p>
             <i class="bi bi-clock-history text-center text-[35px] font-bold"></i>
-            <p className='text-xs sm:text-md text-end' >Garanta o preenchimento <br /> dos seus dados <br />dentro do tempo disponível.</p>
+            <p className='text-xs sm:text-md text-end' >Garanta o preenchimento <br /> dos seus dados dentro <br /> do tempo disponível.</p>
         </div>
     )
 }

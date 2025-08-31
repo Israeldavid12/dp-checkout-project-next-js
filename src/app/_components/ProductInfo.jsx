@@ -19,16 +19,16 @@ export default function ProductInfo({ price, is_manual_price, name, banner_url, 
 
             <div className='flex gap-10 justify-start items-start w-full sm:pl-10 mt-10' >
                 <div className='shadow' >
-                    <img className='w-35 sm:w-60 rounded-md' src={`${image_url}`} alt="" />
+                    <img className='w-28 sm:w-60 rounded-md' src={`${image_url}`} alt="image" />
                 </div>
 
                 <div className='grid gap-1 ' >
                     <p className='text-[12px]' >Esta a pagar:</p>
                     <p className='font-[700] text-[18px]' >{name}</p>
-                    <p className='text-[12px]' >COMPRA 100% SEGURA</p>
-                    <p className='text-[#5C5CC4] text-[22px] font-[800] ' >{!is_manual_price && (price + ' MT')}</p>
+                    <p className='text-[12px]' >COMPRA 100% SEGURA <i class="bi bi-shield-check"></i></p>
+                    <p className='text-[#5C5CC4] text-[23px] font-[800] ' >{!is_manual_price && (price + ' MT')}</p>
                     <div>
-                        <p className='text-[12px]' >Author: {name}</p>
+                        <p className='text-[10px]' >Author: {name}</p>
                     </div>
                 </div>
             </div>
