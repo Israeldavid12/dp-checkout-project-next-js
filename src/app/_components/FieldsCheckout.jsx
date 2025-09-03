@@ -221,11 +221,11 @@ export default function FieldsCheckout({ id, productName, productPrice, sellerID
                         ${type === "Mpesa" ? " ring-5 ring-blue-300 opacity-55  bg-[#F0F4FF]" : ""}`} src={mpesaicon} />
 
                             {/* EMOLA METHOD */}
-                            <Image 
+                            {/* <Image 
                             onClick={() => setType('eMola')}
                             className={`w-full  h-20 object-contain rounded-lg hover:opacity-75 
                              bg-orange-500
-                         ${type === "eMola" ? " ring-5 ring-blue-300 opacity-55  bg-[#EBF0FF]" : ""}`} src={emolaicon} />
+                         ${type === "eMola" ? " ring-5 ring-blue-300 opacity-55  bg-[#EBF0FF]" : ""}`} src={emolaicon} /> */}
                         </div>
                     </div>
                     <div className='grid gap-3 p-0 w-full ' >
