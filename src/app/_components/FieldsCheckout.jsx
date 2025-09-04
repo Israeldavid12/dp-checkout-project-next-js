@@ -19,6 +19,26 @@ const get_data_endppoint_test = 'http://localhost:4000/api/products/checkout-dat
 const get_data_endppoint_live = 'https://api.droopay.com/api/products/checkout-data'
 
 
+const getBuyerIpAdress = async () => {
+    try {
+        const response = await fetch("https://ipapi.co/json/");
+        const data = await response.json();
+        return data?.ip
+    } catch (e) {
+        return null
+    }
+}
+
+const getBuyerCountry = async () => {
+    try {
+        const response = await fetch("https://ipapi.co/json/");
+        const data = await response.json();
+        return data?.country_name
+    } catch (e) {
+        return null
+    }
+}
+
 
 export default function FieldsCheckout({ id, productName, productPrice, sellerID, isManualPrice, token }) {
     const [type, setType] = useState('')
@@ -33,6 +53,8 @@ export default function FieldsCheckout({ id, productName, productPrice, sellerID
     const [manualPrice, setManualPrice] = useState(null)
     const [is_error, setError] = useState(null)
     const [email, setEmail] = useState(null)
+    const [name, setName] = useState(null)
+   
 
     // const handleWhiteCheckout = async () => {
     //     try {
@@ -75,15 +97,7 @@ export default function FieldsCheckout({ id, productName, productPrice, sellerID
                 return live_emola_enpoint
             }
         }
-        const getBuyerCountry = async () => {
-            try {
-                const response = await fetch("https://ipapi.co/json/");
-                const data = await response.json();
-                return data?.country_name
-            } catch (e) {
-                return null
-            }
-        }
+
         async function handlePayment() {
             try {
                 setRunTrans(true)
@@ -97,7 +111,8 @@ export default function FieldsCheckout({ id, productName, productPrice, sellerID
                         buyer: formData,
                         buyerCountry: await getBuyerCountry() || null,
                         paymentMethod: type.toLocaleLowerCase(),
-                        paymentNumber: paymentNumber
+                        paymentNumber: paymentNumber,
+                        ip_adress: await getBuyerIpAdress()
                     }
                 }
 
@@ -158,29 +173,31 @@ export default function FieldsCheckout({ id, productName, productPrice, sellerID
             )}
             <form onSubmit={onSubmit}
                 className='grid gap-3 w-full p-4 md:p-10 text-black' action="">
-                {data?.payer_name_field && (
+                {data?.product?.payer_name_field && (
                     <div className='w-full' >
-                        <label className='' htmlFor="name">Seu nome completo *</label>
+                        <label className='' htmlFor="name">Seu nome *</label>
                         <input
                             minLength={minLength}
                             maxLength={maxLength}
                             onChange={handleName}
                             id='name'
                             name='name'
-
-                            className='px-4 py-3 w-full outline-none ring-1 ring-[silver] text-black text-[17px] rounded-md hover:ring-2 hover:ring-blue-600' type="text" placeholder='Insira seu nome' required />
+                            className='px-4 py-3 w-full outline-none ring-1 ring-[silver] text-black text-[14px] rounded-md hover:ring-green-600 focus:ring-2 focus:ring-green-500  mt-3'
+                            type="text"
+                            placeholder='Insira seu nome'
+                            required />
 
                     </div>
                 )}
                 <div className='w-full' >
-                    <label className='py-3' htmlFor="email">O seu e-mail *</label>
+                    <label className='py-3' htmlFor="email">E-mail *</label>
                     <input
                         name='email'
                         onChange={(e) => setEmail(e.target.value)}
                         minLength={minLength}
                         maxLength={maxLength}
                         id='email'
-                        className='px-4 py-3 w-full outline-none ring-1 ring-[silver] text-black text-[14px] rounded-md hover:ring-blue-600 focus:ring-2 focus:ring-blue-500 mt-3'
+                        className='px-4 py-3 w-full outline-none ring-1 ring-[silver] text-black text-[14px] rounded-md hover:ring-green-600 focus:ring-2 focus:ring-green-500 mt-3'
                         type="email"
                         placeholder='Insira seu e-mail'
                         required />
@@ -212,20 +229,22 @@ export default function FieldsCheckout({ id, productName, productPrice, sellerID
                     <p className='text-[14px] sm:text-[15px] font-[600] text-center text-black/75' >Selecione um metodo de pagamento</p>
                     <div className='flex gap-3 p-3 justify-center' >
                         <div className='flex  gap-4 p-2 justify-between w-full' >
-                            <Image alt='image' 
-                            onClick={(e) => {
-                                setType('Mpesa')
-                            }} 
-                        className={`w-full object-contain h-20 rounded-lg hover:opacity-75
+                            <Image alt='image'
+                                onClick={(e) => {
+                                    setType('Mpesa')
+                                }}
+                                className={`w-full object-contain h-20 rounded-lg hover:opacity-75
                            bg-red-600
                         ${type === "Mpesa" ? " ring-5 ring-blue-300 opacity-55  bg-[#F0F4FF]" : ""}`} src={mpesaicon} />
 
                             {/* EMOLA METHOD */}
-                            {/* <Image 
-                            onClick={() => setType('eMola')}
-                            className={`w-full  h-20 object-contain rounded-lg hover:opacity-75 
+                            {id === "124" && (
+                                <Image
+                                    onClick={() => setType('eMola')}
+                                    className={`w-full  h-20 object-contain rounded-lg hover:opacity-75 
                              bg-orange-500
-                         ${type === "eMola" ? " ring-5 ring-blue-300 opacity-55  bg-[#EBF0FF]" : ""}`} src={emolaicon} /> */}
+                         ${type === "eMola" ? " ring-5 ring-blue-300 opacity-55  bg-[#EBF0FF]" : ""}`} src={emolaicon} />
+                            )}
                         </div>
                     </div>
                     <div className='grid gap-3 p-0 w-full ' >

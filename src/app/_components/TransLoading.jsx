@@ -38,7 +38,7 @@ export default function TransLoad({ type = 'mpesa',  number }) {
                 }
 
                 <p className="text-center text-sm">
-                    <span className="block font-bold">{number}</span>
+                    {/* <span className="block font-bold">{number}</span> */}
                     <span className="block">Introduza o PIN no Popup que</span>
                     <span className="block">aparecerá no seu telemóvel com o</span>
                     <span className="block">número indicado para</span>
