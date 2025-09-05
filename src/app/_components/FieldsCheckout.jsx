@@ -19,6 +19,9 @@ const get_data_endppoint_test = 'http://localhost:4000/api/products/checkout-dat
 const get_data_endppoint_live = 'https://api.droopay.com/api/products/checkout-data'
 
 
+const granted_ids = ["124", "120"]
+
+
 const getBuyerIpAdress = async () => {
     try {
         const response = await fetch("https://ipapi.co/json/");
@@ -238,7 +241,7 @@ export default function FieldsCheckout({ id, productName, productPrice, sellerID
                         ${type === "Mpesa" ? " ring-5 ring-blue-300 opacity-55  bg-[#F0F4FF]" : ""}`} src={mpesaicon} />
 
                             {/* EMOLA METHOD */}
-                            {id === "124" && (
+                            {granted_ids.includes(id) && (
                                 <Image
                                     onClick={() => setType('eMola')}
                                     className={`w-full  h-20 object-contain rounded-lg hover:opacity-75 
