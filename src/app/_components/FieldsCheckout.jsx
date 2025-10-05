@@ -9,6 +9,8 @@ import axios from 'axios'
 import TransLoad from '../_components/TransLoading';
 import { useRouter } from 'next/navigation'
 import PayPalCheckout from './PayPalCheckout'
+import { useSearchParams } from "next/navigation";
+
 
 const test_mpesa_enpoint = 'http://localhost:3000/api/payment/mpesa/live'
 const live_mpesa_enpoint = 'https://payment.droopay.com/api/payment/mpesa/live'
@@ -57,7 +59,13 @@ export default function FieldsCheckout({ id, productName, productPrice, sellerID
     const [is_error, setError] = useState(null)
     const [email, setEmail] = useState(null)
     const [name, setName] = useState(null)
-   
+    const searchParams = useSearchParams();
+    const fbp = searchParams.get("fbp");
+    const fbc = searchParams.get("fbc");
+
+    console.log("FBP:", fbp);
+    console.log("FBC:", fbc);
+
 
     // const handleWhiteCheckout = async () => {
     //     try {
@@ -115,7 +123,9 @@ export default function FieldsCheckout({ id, productName, productPrice, sellerID
                         buyerCountry: await getBuyerCountry() || null,
                         paymentMethod: type.toLocaleLowerCase(),
                         paymentNumber: paymentNumber,
-                        ip_adress: await getBuyerIpAdress()
+                        ip_adress: await getBuyerIpAdress(),
+                        fbp: fbp || null,
+                        fbc: fbc || null,
                     }
                 }
 
@@ -242,9 +252,9 @@ export default function FieldsCheckout({ id, productName, productPrice, sellerID
 
                             {/* EMOLA METHOD */}
                             {/* {granted_ids.includes(id) && ( */}
-                                <Image
-                                    onClick={() => setType('eMola')}
-                                    className={`w-full  h-20 object-contain rounded-lg hover:opacity-75 
+                            <Image
+                                onClick={() => setType('eMola')}
+                                className={`w-full  h-20 object-contain rounded-lg hover:opacity-75 
                              bg-orange-500
                          ${type === "eMola" ? " ring-5 ring-blue-300 opacity-55  bg-[#EBF0FF]" : ""}`} src={emolaicon} />
                             {/* )}  */}
