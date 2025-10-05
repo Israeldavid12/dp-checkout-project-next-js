@@ -107,7 +107,7 @@ export default function FieldsCheckout({ id, productName, productPrice, sellerID
             if (type.toLocaleLowerCase() === 'emola') {
                 return live_emola_enpoint
             }
-        }
+        } 
 
         async function handlePayment() {
             try {
