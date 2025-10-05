@@ -11,7 +11,7 @@ import { useRouter } from 'next/navigation'
 import PayPalCheckout from './PayPalCheckout'
 import { useSearchParams } from "next/navigation";
 
-
+ 
 const test_mpesa_enpoint = 'http://localhost:3000/api/payment/mpesa/live'
 const live_mpesa_enpoint = 'https://payment.droopay.com/api/payment/mpesa/live'
 const live_emola_enpoint = 'https://payment.droopay.com/api/payment/emola/live'
