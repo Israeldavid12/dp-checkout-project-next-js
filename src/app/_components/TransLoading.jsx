@@ -1,8 +1,9 @@
 'use client'
-
+import React from "react"
 import Image from "next/image"
 import mpesaImage from '../../../public/mpesa.png'
 import emolaicon from '../../../public/emola.png'
+import { XCircle } from "lucide-react"
 
 function Spinner({ type = 'mpesa' }) {
     return (
@@ -20,13 +21,27 @@ function Spinner({ type = 'mpesa' }) {
 }
 
 
-export default function TransLoad({ type = 'mpesa',  number }) {
+export default function TransLoad({ type = 'mpesa', number }) {
+    const [seg, setSeg] = React.useState(15);
+
+    React.useEffect(() => {
+        if (seg > 0) {
+            const timer = setTimeout(() => setSeg(seg - 1), 1000);
+            return () => clearTimeout(timer);
+        }
+    }, [seg]);
+
     return (
         <div className="transition-all duration-500 transform  flex justify-center items-center fixed  left-0 right-0 bg-opacity-50 bg-bli w-screen h-screen backdrop-blur-md z-1000 top-0">
             <div className="flex flex-col gap-3 justify-center opacity-100 items-center  bg-white  rounded-md shadow-md p-4 text-black" >
                 <div className="flex gap-3" >
                     <Spinner type={type} />
                     <p>Insira o PIN e aguarde...</p>
+                    {
+                        seg === 0 && (
+                            <XCircle className="cursor-pointer" size={20} onClick={() => window.location.reload()} />
+                        )
+                    }
                 </div>
                 {type === 'mpesa' ? (
                     <Image className="w-25 h-25 rounded-md" src={mpesaImage} />
@@ -36,6 +51,12 @@ export default function TransLoad({ type = 'mpesa',  number }) {
                         <Image className="w-25 h-25 rounded-md" src={emolaicon} />
                     )
                 }
+
+                <p className="text-center text-sm">
+                    O Popup aparecerá dentro de: <strong>00:{seg}</strong> segundos
+                    <br />
+
+                </p>
 
                 <p className="text-center text-sm">
                     {/* <span className="block font-bold">{number}</span> */}
