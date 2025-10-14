@@ -83,7 +83,7 @@ export default function FieldsCheckout({ id, productName, productPrice, sellerID
     const [name, setName] = useState(null)
     const searchParams = useSearchParams();
     const fbclid = searchParams.get("fbclid");
-    console.log("fbclid from URL:", fbclid);
+    // console.log("fbclid from URL:", fbclid);
 
 
 
@@ -135,7 +135,7 @@ export default function FieldsCheckout({ id, productName, productPrice, sellerID
                 const endpoint = defineEndpoint();
 
                 const { fbc, fbp} = setFbCookiesFromFbclid(fbclid)
-                console.log("fbp and fbc:", { fbp, fbc });
+                // console.log("fbp and fbc:", { fbp, fbc });
 
                 const payload = {
                     form: {
