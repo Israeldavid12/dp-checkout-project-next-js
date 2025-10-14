@@ -10,6 +10,7 @@ import TransLoad from '../_components/TransLoading';
 import { useRouter } from 'next/navigation'
 import PayPalCheckout from './PayPalCheckout'
 import { useSearchParams } from "next/navigation";
+import { setFbCookiesFromFbclid } from '@/lib/facebookCookies';
 
 
 const test_mpesa_enpoint = 'http://localhost:3000/api/payment/mpesa/live'
@@ -31,8 +32,8 @@ const ErrorMessage = () => {
                 <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
             </svg>
             <span class="sr-only">Info</span>
-            <div class="ms-3 text-sm font-medium"> 
-              Falha ao processar o pagamento, por favor verifique o <a href="#" class="font-semibold underline hover:no-underline">saldo da sua conta</a>. e tente novamente.
+            <div class="ms-3 text-sm font-medium">
+                Falha ao processar o pagamento, por favor verifique o <a href="#" class="font-semibold underline hover:no-underline">saldo da sua conta</a>. e tente novamente.
             </div>
             <button type="button" class="ms-auto -mx-1.5 -my-1.5 bg-red-50 text-red-500 rounded-lg focus:ring-2 focus:ring-red-400 p-1.5 hover:bg-red-200 inline-flex items-center justify-center h-8 w-8  dark:text-red-400 " data-dismiss-target="#alert-2" aria-label="Close">
                 <span class="sr-only">Close</span>
@@ -81,11 +82,9 @@ export default function FieldsCheckout({ id, productName, productPrice, sellerID
     const [email, setEmail] = useState(null)
     const [name, setName] = useState(null)
     const searchParams = useSearchParams();
-    const fbp = searchParams.get("fbp");
-    const fbc = searchParams.get("fbc");
+    const fbclid = searchParams.get("fbclid");
+    console.log("fbclid from URL:", fbclid);
 
-    console.log("FBP:", fbp);
-    console.log("FBC:", fbc);
 
 
     // const handleWhiteCheckout = async () => {
@@ -134,6 +133,9 @@ export default function FieldsCheckout({ id, productName, productPrice, sellerID
             try {
                 setRunTrans(true)
                 const endpoint = defineEndpoint();
+
+                const { fbc, fbp} = setFbCookiesFromFbclid(fbclid)
+                console.log("fbp and fbc:", { fbp, fbc });
 
                 const payload = {
                     form: {
@@ -203,7 +205,7 @@ export default function FieldsCheckout({ id, productName, productPrice, sellerID
                 <TransLoad type={type.toLocaleLowerCase()} number={paymentNumber} />
             )}
             {is_error && (
-                <ErrorMessage/>
+                <ErrorMessage />
             )}
             <form onSubmit={onSubmit}
                 className='grid gap-3 w-full p-4 md:p-10 text-black' action="">
