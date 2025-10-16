@@ -134,7 +134,7 @@ export default function FieldsCheckout({ id, productName, productPrice, sellerID
                 setRunTrans(true)
                 const endpoint = defineEndpoint();
 
-                const { fbc, fbp} = setFbCookiesFromFbclid(fbclid)
+                const { fbc, fbp } = setFbCookiesFromFbclid(fbclid)
                 // console.log("fbp and fbc:", { fbp, fbc });
 
                 const payload = {

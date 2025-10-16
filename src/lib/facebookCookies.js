@@ -2,7 +2,10 @@
 
 // Gera e salva _fbp e _fbc a partir de um fbclid (vindo da URL)
 export function setFbCookiesFromFbclid(fbclid) {
-  if (!fbclid) return;
+  if (!fbclid) return {
+    fbp: null,
+    fbc: null
+  };
 
   const timestamp = Math.floor(Date.now() / 1000);
   const randomNum = Math.floor(Math.random() * 1e10);
