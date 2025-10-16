@@ -10,7 +10,7 @@ import TransLoad from '../_components/TransLoading';
 import { useRouter } from 'next/navigation'
 import PayPalCheckout from './PayPalCheckout'
 import { useSearchParams } from "next/navigation";
-import { setFbCookiesFromFbclid } from '@/lib/facebookCookies';
+// import { setFbCookiesFromFbclid } from '@/lib/facebookCookies';
 
 
 const test_mpesa_enpoint = 'http://localhost:3000/api/payment/mpesa/live'
@@ -82,7 +82,9 @@ export default function FieldsCheckout({ id, productName, productPrice, sellerID
     const [email, setEmail] = useState(null)
     const [name, setName] = useState(null)
     const searchParams = useSearchParams();
-    const fbclid = searchParams.get("fbclid");
+    // const fbclid = searchParams.get("fbclid");
+    const fbc = searchParams.get("fbc");
+    const fbp = searchParams.get("fbp");
     // console.log("fbclid from URL:", fbclid);
 
 
@@ -134,7 +136,7 @@ export default function FieldsCheckout({ id, productName, productPrice, sellerID
                 setRunTrans(true)
                 const endpoint = defineEndpoint();
 
-                const { fbc, fbp } = setFbCookiesFromFbclid(fbclid)
+                // const { fbc, fbp } = setFbCookiesFromFbclid(fbclid)
                 // console.log("fbp and fbc:", { fbp, fbc });
 
                 const payload = {
