@@ -13,7 +13,7 @@ export default function ProductInfo({ price, is_manual_price, name, banner_url, 
 
     return (
         <div className={`${styles.productInfo} md:rounded-lg md:shadow-lg bg-white `} >
-            <div className='w-[100%] h-48 overflow-hidden rounded-lg mt-3 sm:mt-0 md:block hidden' >
+            <div className='w-[100%] h-48 overflow-hidden rounded-lg mt-3 sm:mt-0 ' >
                 <img className='w-full h-full object-cover rounded-lg ' src={`${banner_url}`} alt="logo" />
             </div>
 
