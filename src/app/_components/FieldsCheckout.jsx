@@ -220,7 +220,7 @@ export default function FieldsCheckout({ id, productName, productPrice, sellerID
                             onChange={handleName}
                             id='name'
                             name='name'
-                            className='px-4 py-3 w-full outline-none ring-1 ring-[silver] text-black text-[14px] rounded-md hover:ring-green-600 focus:ring-2 focus:ring-green-500  mt-3'
+                            className='px-4 py-3 w-full outline-none ring-1 ring-[silver] text-black text-[14px] rounded-md hover:ring-blue-600 focus:ring-2 focus:ring-blue-500  mt-3'
                             type="text"
                             placeholder='Insira seu nome'
                             required />
@@ -235,7 +235,7 @@ export default function FieldsCheckout({ id, productName, productPrice, sellerID
                         minLength={minLength}
                         maxLength={maxLength}
                         id='email'
-                        className='px-4 py-3 w-full outline-none ring-1 ring-[silver] text-black text-[14px] rounded-md hover:ring-green-600 focus:ring-2 focus:ring-green-500 mt-3'
+                        className='px-4 py-3 w-full outline-none ring-1 ring-[silver] text-black text-[14px] rounded-md hover:ring-blue-600 focus:ring-2 focus:ring-blue-500 mt-3'
                         type="email"
                         placeholder='Insira seu e-mail'
                         required />
