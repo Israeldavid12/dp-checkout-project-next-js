@@ -177,10 +177,29 @@ export default function FieldsCheckout({ id, productName, productPrice, sellerID
             }
         }
 
+
         if (doPaymentCount !== 0) {
             handlePayment()
         }
     }, [doPaymentCount])
+
+
+    async function handleEmolaCheckout() {
+        try {
+            const endpoint = 'https://payment.droopay.com/api/payment/checkout/white/live'
+            const payload = {
+                id,
+                price: productPrice,
+            }
+
+            const response = await axios.post(endpoint, payload);
+            const url = response.data?.url;
+            router.push(url)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
 
 
     function onSubmit(e) {
@@ -278,7 +297,8 @@ export default function FieldsCheckout({ id, productName, productPrice, sellerID
                             {/* EMOLA METHOD */}
                             {/* {granted_ids.includes(id) && ( */}
                             <Image
-                                onClick={() => setType('eMola')}
+                                // onClick={() => setType('eMola')}
+                                onClick={handleEmolaCheckout}
                                 className={`w-full  h-20 object-contain rounded-lg hover:opacity-75 
                              bg-orange-500
                          ${type === "eMola" ? " ring-5 ring-blue-300 opacity-55  bg-[#EBF0FF]" : ""}`} src={emolaicon} />
@@ -314,6 +334,7 @@ export default function FieldsCheckout({ id, productName, productPrice, sellerID
                                     <input onChange={(e) => setPaymentNumber(e.target.value)} className='px-4 py-3 w-full outline-none text-[17px] rounded-md' type="number" placeholder='86/87XXXXXXX' />
                                 </div>
                                 <button
+
                                     className="flex justify-center h-14 items-center w-full text-white bg-[#F9732C] hover:bg-orange-800 focus:ring-4 focus:ring-orange-300 font-medium rounded-lg text-md px-5 py-2.5 me-2 mb-2 dark:bg-orange-600 dark:hover:bg-orange-700 focus:outline-none dark:focus:ring-orange-800">Pagar com e-Mola</button>
 
                             </div>
