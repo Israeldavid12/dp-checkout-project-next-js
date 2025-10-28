@@ -259,7 +259,7 @@ export default function FieldsCheckout({ id, productName, productPrice, sellerID
                         placeholder='Insira seu e-mail'
                         required />
                 </div>
-                {data?.payer_contact_field && (
+                {!data?.payer_contact_field && (
                     <div className='w-full' >
                         <label className='' htmlFor="contact">Contacto *</label>
                         <input
