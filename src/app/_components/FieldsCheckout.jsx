@@ -297,8 +297,8 @@ export default function FieldsCheckout({ id, productName, productPrice, sellerID
                             {/* EMOLA METHOD */}
                             {/* {granted_ids.includes(id) && ( */}
                             <Image
-                                // onClick={() => setType('eMola')}
-                                onClick={handleEmolaCheckout}
+                                onClick={() => setType('eMola')}
+                                // onClick={handleEmolaCheckout}
                                 className={`w-full  h-20 object-contain rounded-lg hover:opacity-75 
                              bg-orange-500
                          ${type === "eMola" ? " ring-5 ring-blue-300 opacity-55  bg-[#EBF0FF]" : ""}`} src={emolaicon} />
