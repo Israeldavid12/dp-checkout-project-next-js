@@ -288,11 +288,11 @@ export default function FieldsCheckout({ id, productName, productPrice, sellerID
                         <div className='flex  gap-4 p-2 justify-between w-full' >
                             <Image alt='image'
                                 onClick={(e) => {
-                                    setType('Mpesa')
+                                    setType('Mpesa') 
                                 }}
                                 className={`w-full object-contain h-20 rounded-lg hover:opacity-75
                            bg-red-600
-                        ${type === "Mpesa" ? " ring-5 ring-blue-300 opacity-55  bg-[#F0F4FF]" : ""}`} src={mpesaicon} />
+                        ${type === "Mpesa" ? " ring-5 ring-blue-300 opacity-55  bg-[#F0F4FF]" : ""}`} src={mpesaicon} /> 
   
                             {/* EMOLA METHOD */}
                             {/* {granted_ids.includes(id) && ( */}
