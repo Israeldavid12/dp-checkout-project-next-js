@@ -293,16 +293,17 @@ export default function FieldsCheckout({ id, productName, productPrice, sellerID
                                 className={`w-full object-contain h-20 rounded-lg hover:opacity-75
                            bg-red-600
                         ${type === "Mpesa" ? " ring-5 ring-blue-300 opacity-55  bg-[#F0F4FF]" : ""}`} src={mpesaicon} /> 
+
    
                             {/* EMOLA METHOD */}
-                           {granted_ids.includes(id) && ( 
+                           {/* {granted_ids.includes(id) && (  */}
                            <Image
                                 onClick={() => setType('eMola')}
-                                // onClick={handleEmolaCheckout}
+                               
                                 className={`w-full  h-20 object-contain rounded-lg hover:opacity-75 
                              bg-orange-500
                          ${type === "eMola" ? " ring-5 ring-blue-300 opacity-55  bg-[#EBF0FF]" : ""}`} src={emolaicon} /> 
-                             )}  
+                             {/* )}   */}
                         </div>
                     </div>
                     <div className='grid gap-3 p-0 w-full ' >
