@@ -307,8 +307,8 @@ export default function FieldsCheckout({ id, productName, productPrice, sellerID
                         </div>
                     </div>
                     <div className='grid gap-3 p-0 w-full ' >
-                        {type === 'Mpesa' && (
-                            <div className='grid gap-3' >
+                        {type === 'Mpesa' && ( 
+                            <div className='grid gap-3' > 
                                 <div
                                     className="flex gap-3 justify-center items-center px-3  
                                         ring-2 ring-[silver]  focus-within:ring-blue-500 
