@@ -294,7 +294,7 @@ export default function FieldsCheckout({ id, productName, productPrice, sellerID
                            bg-red-600
                         ${type === "Mpesa" ? " ring-5 ring-blue-300 opacity-55  bg-[#F0F4FF]" : ""}`} src={mpesaicon} />  */}
 
-   
+     
                             {/* EMOLA METHOD */}
                            {/* {granted_ids.includes(id) && (  */}
                          {/* <Image
