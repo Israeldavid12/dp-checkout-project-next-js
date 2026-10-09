@@ -14,12 +14,12 @@ export default function ProductInfo({ price, is_manual_price, name, banner_url, 
     return (
         <div className={`${styles.productInfo} md:rounded-lg md:shadow-lg bg-white `} >
             <div className='w-[100%] h-48 overflow-hidden rounded-lg mt-3 sm:mt-0 ' >
-                <img className='w-full h-full object-cover rounded-lg ' src={`${banner_url}`} alt="logo" />
+                <img className='w-full h-full object-cover rounded-lg ' src={`https://pub-8388501bac324f07b570765387d76c70.r2.dev${new URL(banner_url).pathname}`} alt="logo" />
             </div>
 
             <div className='flex gap-10 justify-start items-start w-full sm:pl-13 mt-10 ml-4' >
                 <div className='shadow' >
-                    <img className='w-28 sm:w-50  rounded-md' src={`${image_url}`} alt="image" />
+                    <img className='w-28 sm:w-50  rounded-md' src={`https://pub-8388501bac324f07b570765387d76c70.r2.dev${new URL(image_url).pathname}`} alt="image" />
                 </div>
 
                 <div className='grid gap-1 ' >

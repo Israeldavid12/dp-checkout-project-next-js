@@ -286,24 +286,24 @@ export default function FieldsCheckout({ id, productName, productPrice, sellerID
                     <p className='text-[14px] sm:text-[15px] font-[600] text-center text-black/75' >Selecione um metodo de pagamento</p>
                     <div className='flex gap-3 p-3 justify-center' >
                         <div className='flex  gap-4 p-2 justify-between w-full' >
-                            {/* <Image alt='image'
+                            <Image alt='image'
                                 onClick={(e) => {
                                     setType('Mpesa') 
                                 }}
                                 className={`w-full object-contain h-20 rounded-lg hover:opacity-75
                            bg-red-600
-                        ${type === "Mpesa" ? " ring-5 ring-blue-300 opacity-55  bg-[#F0F4FF]" : ""}`} src={mpesaicon} />  */}
+                        ${type === "Mpesa" ? " ring-5 ring-blue-300 opacity-55  bg-[#F0F4FF]" : ""}`} src={mpesaicon} />  
 
      
                             {/* EMOLA METHOD */}
-                           {/* {granted_ids.includes(id) && (  */}
-                         {/* <Image
+                        {/* {granted_ids.includes(id) && (  */}
+                       <Image
                                 onClick={() => setType('eMola')}
                                
                                 className={`w-full  h-20 object-contain rounded-lg hover:opacity-75 
                              bg-orange-500
-                         ${type === "eMola" ? " ring-5 ring-blue-300 opacity-55  bg-[#EBF0FF]" : ""}`} src={emolaicon} />   */}
-                             {/* )}   */}
+                         ${type === "eMola" ? " ring-5 ring-blue-300 opacity-55  bg-[#EBF0FF]" : ""}`} src={emolaicon} />   
+                                {/* )}   */}
                         </div>
                     </div>
                     <div className='grid gap-3 p-0 w-full ' >
