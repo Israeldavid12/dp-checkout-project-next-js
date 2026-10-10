@@ -1,12 +1,18 @@
 import CheckoutPageClient from './CheckoutPageClient';
 
 export async function generateMetadata({ params }) {
+   
+    const { id } = await params; 
+
     return {
-        title: `Checkout`,
+        title: `Checkout - ${id}`,
     };
 }
 
-export default function CheckoutPage({ params }) {
-    return <CheckoutPageClient id={params.id} /> 
-}
+export default async function CheckoutPage({ params }) {
+    
+    const { id } = await params;
+    
   
+    return <CheckoutPageClient id={id} />; 
+}

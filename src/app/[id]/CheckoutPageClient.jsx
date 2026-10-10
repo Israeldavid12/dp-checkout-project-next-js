@@ -167,6 +167,8 @@ export default function CheckoutPageClient({ id }) {
     const [decoded, setDecoded] = useState(null)
     const [response_status_code, setStatus] = useState(0)
 
+    console.log(id)
+
 
     useEffect(() => {
 
